@@ -29,7 +29,7 @@ func _input(event):
 func spawn_new_block():
 	var block = block_prefab.instance(get_multiplier())
 	block.global_position = random_position()
-	block.set_speed_multiplier(get_multiplier())
+	block.multiplier = get_multiplier()
 	$Blocks.add_child(block)
 
 func random_position():
