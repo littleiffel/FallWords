@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/PNG/Tiles/platformPack_tile020.png" type="Texture" id=1]
+[ext_resource path="res://Assets/PNG/Tiles/platformPack_tile008.png" type="Texture" id=1]
 [ext_resource path="res://Prefabs/Block.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/Font.tres" type="DynamicFont" id=3]
 

@@ -4,6 +4,7 @@ extends KinematicBody2D
 
 export var SPEED = 50
 var character
+var destroyed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,8 @@ func _process(delta):
 
 
 func check_input(input):
-	if input == character:
+	if input == character and not destroyed:
+		destroyed = true
 		get_tree().call_group("GameManager", "score_up")
 		$AnimationPlayer.play("Destroy")
 	pass
