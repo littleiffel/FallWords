@@ -3,8 +3,12 @@ extends KinematicBody2D
 
 
 export var SPEED = 50
+var multiplier = 1
 var character
 var destroyed = false
+
+func set_speed_multiplier(multi):
+	multiplier = multi
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,8 +18,11 @@ func _ready():
 
 func _process(delta):
 	var direction_vector := Vector2(0,1)
-	move_and_collide(direction_vector * delta * SPEED)
+	var s = get_speed()
+	move_and_collide(direction_vector * delta * s)
 
+func get_speed():
+	return SPEED + (20 * multiplier) 
 
 func check_input(input):
 	if input == character and not destroyed:

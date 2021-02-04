@@ -7,10 +7,14 @@ extends Node2D
 var block_prefab = preload("res://Prefabs/Block.tscn")
 var score = 0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_score()
 	$Timer.start()
+	
+func get_multiplier():
+	return int(round(score / 10))
 
 func update_score():
 	$HUD/Score.text = String(score)
@@ -23,8 +27,9 @@ func _input(event):
 				block.check_input(event.scancode)
 
 func spawn_new_block():
-	var block = block_prefab.instance()
+	var block = block_prefab.instance(get_multiplier())
 	block.global_position = random_position()
+	block.set_speed_multiplier(get_multiplier())
 	$Blocks.add_child(block)
 
 func random_position():
