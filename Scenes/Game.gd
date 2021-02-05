@@ -11,10 +11,11 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_score()
+	print(int(round(44/10)))
 	$Timer.start()
 	
 func get_multiplier():
-	return int(round(score / 10))
+	return round(score / 10)
 
 func update_score():
 	$HUD/Score.text = String(score)
@@ -34,8 +35,10 @@ func spawn_new_block():
 
 func random_position():
 	randomize()
+	print(get_tree().get_root().size)
+	print(get_viewport().size)
 	var rect = get_viewport().size
-	var random_position = rand_range(20, rect.x -20)
+	var random_position = rand_range(30, rect.x -40)
 	return Vector2(random_position, 0)
 	
 func score_up():
