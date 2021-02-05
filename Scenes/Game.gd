@@ -11,7 +11,6 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_score()
-	print(int(round(44/10)))
 	$Timer.start()
 	
 func get_multiplier():
@@ -30,14 +29,12 @@ func _input(event):
 func spawn_new_block():
 	var block = block_prefab.instance(get_multiplier())
 	block.global_position = random_position()
-	block.multiplier = get_multiplier()
+	#block.multiplier = get_multiplier()
 	$Blocks.add_child(block)
 
 func random_position():
 	randomize()
-	print(get_tree().get_root().size)
-	print(get_viewport().size)
-	var rect = get_viewport().size
+	var rect = get_tree().get_root().size
 	var random_position = rand_range(30, rect.x -40)
 	return Vector2(random_position, 0)
 	
