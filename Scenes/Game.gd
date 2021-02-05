@@ -14,7 +14,8 @@ func _ready():
 	$Timer.start()
 	
 func get_multiplier():
-	return round(score / 10)
+	print(round(score/10))
+	return round(score / 10) + 1
 
 func update_score():
 	$HUD/Score.text = String(score)
@@ -27,15 +28,15 @@ func _input(event):
 				block.check_input(event.scancode)
 
 func spawn_new_block():
-	var block = block_prefab.instance(get_multiplier())
+	var block = block_prefab.instance()
 	block.global_position = random_position()
-	#block.multiplier = get_multiplier()
+	block.multiplier = get_multiplier()
 	$Blocks.add_child(block)
 
 func random_position():
 	randomize()
 	var rect = get_tree().get_root().size
-	var random_position = rand_range(30, rect.x -40)
+	var random_position = rand_range(30, 800 -40)
 	return Vector2(random_position, 0)
 	
 func score_up():
