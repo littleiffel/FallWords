@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
 
@@ -10,16 +10,9 @@ var destroyed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	gravity_scale += multiplier * 2
 	character = randi()% 26 + 65
 	$Label.text = (char(character)).to_lower()
-
-func _process(delta):
-	var direction_vector := Vector2(0,1)
-	var s = get_speed()
-	move_and_collide(direction_vector * delta * s)
-
-func get_speed():
-	return SPEED + (50 * multiplier) 
 
 func check_input(input):
 	if input == character and not destroyed:
